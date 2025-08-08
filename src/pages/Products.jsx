@@ -1,5 +1,5 @@
 import { useState , useEffect } from 'react';
-import "../css/Products.css";
+import "../css/products.css";
 import { Link } from 'react-router-dom';
 import  CartClass  from '../entities/CartClass'
 import  useStockCart  from '../hooks/useStockCart';

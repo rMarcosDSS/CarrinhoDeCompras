@@ -1,0 +1,50 @@
+.header {
+    background-color: white;
+    margin-inline: 254px;
+    padding: 1.5rem;
+    font-size: 32px;
+    border-radius: 54px;
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 42px;
+}
+
+.navbar-center {
+    display: flex;
+    gap: 2rem;
+   
+}
+
+.navbar-center a {
+    transition: .3s;
+}
+
+.navbar-center a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+     transition: .3s;
+}
+
+.navbar-cart a{
+    color: white;
+    background-color: var(--primary-color);
+    border: solid 2px var(--primary-color);
+    padding: .5rem;
+     border-radius: 54px;
+     transition: .3s;
+}
+
+.navbar-cart a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+    background-color: #f0f0f0;
+    transition: .3s;
+}
