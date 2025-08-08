@@ -1,10 +1,13 @@
 import { useState , useEffect } from 'react';
 import "../css/Products.css";
+import { Link } from 'react-router-dom';
+import  CartClass  from '../entities/CartClass'
+import  useStockCart  from '../hooks/useStockCart';
 
 export default function Products() {
 
 const url = "https://api.escuelajs.co/api/v1/products"
-
+const { addItem } = useStockCart()
 const [products,SetProducts] = useState([])
 
   useEffect(() => {
@@ -20,6 +23,26 @@ const [products,SetProducts] = useState([])
   fetchAPI()
 },[])
 
+
+
+
+function addToCart(produto) {
+
+  const novoProduto = new CartClass({
+    id: produto.id , 
+    title: produto.title , 
+    description: produto.description , 
+    price: produto.price , 
+    quantity: 1 , 
+    image: produto.images[0]
+  })
+  console.log(novoProduto)
+
+  addItem(novoProduto)
+}
+
+
+
   return (
     <section>
       <h1>Produtos</h1>
@@ -28,8 +51,11 @@ const [products,SetProducts] = useState([])
         <ul>
           {
             products.map((item)=> (
-              <li>{item.title} 
-              <img src={item.images[0]}/></li>
+              <li key={item.id}>{item.title} 
+              <img src={item.images[0]}/>
+              <Link to="/">Comprar</Link>
+              <button  onClick={() => (addToCart(item))}>Adicionar ao Carrinho</button>
+              </li>
             ))
             
           }
