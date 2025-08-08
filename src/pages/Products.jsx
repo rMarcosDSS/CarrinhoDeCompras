@@ -7,7 +7,7 @@ import  useStockCart  from '../hooks/useStockCart';
 export default function Products() {
 
 const url = "https://api.escuelajs.co/api/v1/products"
-const { addItem } = useStockCart()
+const { items , addItem , increasesItem } = useStockCart()
 const [products,SetProducts] = useState([])
 
   useEffect(() => {
@@ -28,17 +28,24 @@ const [products,SetProducts] = useState([])
 
 function addToCart(produto) {
 
-  const novoProduto = new CartClass({
-    id: produto.id , 
-    title: produto.title , 
-    description: produto.description , 
-    price: produto.price , 
-    quantity: 1 , 
-    image: produto.images[0]
-  })
-  console.log(novoProduto)
+  if(items.find( (atual) => ( atual.id === produto.id))){ 
+    increasesItem(produto.id)
+    }
+      
+    else{
 
-  addItem(novoProduto)
+    const novoProduto = new CartClass({
+      id: produto.id , 
+      title: produto.title , 
+      description: produto.description , 
+      price: produto.price , 
+      quantity: 1 , 
+      image: produto.images[0]
+    })
+    console.log(novoProduto)
+
+    addItem(novoProduto)
+  }
 }
 
 

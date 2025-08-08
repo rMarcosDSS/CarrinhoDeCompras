@@ -16,6 +16,7 @@ export function CartContextProvider ({children}) {
     })
 
     const addItem = (item) => {
+        
     setItems(current => {
       const updatedItems = [item, ...current]
       localStorage.setItem('react-cart', JSON.stringify(updatedItems))
@@ -28,18 +29,48 @@ export function CartContextProvider ({children}) {
     }
 
     const deleteItem = (itemId) => {
-    setItems(current => {
-      const updatedItems = current.filter(item => item.id !== itemId)
-      localStorage.setItem('react-cart', JSON.stringify(updatedItems))
-      return updatedItems
-    })
+      setItems(current => {
+        const updatedItems = current.filter(item => item.id !== itemId)
+        localStorage.setItem('react-cart', JSON.stringify(updatedItems))
+        return updatedItems
+      })
     }
+
+    const increasesItem = (itemID) => {
+      setItems((current) => {
+        const updatedItems = current.map((atual) => {
+          if (atual.id === itemID) {
+            return { ...atual, quantity: atual.quantity + 1 };
+          }
+          return atual
+        })
+        localStorage.setItem("react-cart", JSON.stringify(updatedItems));
+        return updatedItems
+      })
+    }
+
+    const decreaseItem = (itemID) => {
+      setItems((current) => {
+        const updatedItems = current
+          .map((atual) => {
+            if (atual.id === itemID) {
+              return { ...atual, quantity: atual.quantity - 1 };
+            }
+            return atual;
+          })
+        localStorage.setItem("react-cart", JSON.stringify(updatedItems))
+        return updatedItems;
+      })
+    }
+
 
     const cartFunctions = {
     items,
     addItem,
     getItem,
-    deleteItem
+    deleteItem, 
+    increasesItem,
+    decreaseItem
   }
 
   return (
