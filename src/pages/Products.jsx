@@ -3,6 +3,7 @@ import "../css/products.css";
 import { Link } from 'react-router-dom';
 import  CartClass  from '../entities/CartClass'
 import  useStockCart  from '../hooks/useStockCart';
+import { Outlet } from "react-router-dom";
 
 export default function Products() {
 
@@ -60,7 +61,7 @@ function addToCart(produto) {
             products.map((item)=> (
               <li key={item.id}>{item.title} 
               <img src={item.images[0]}/>
-              <Link to="/">Comprar</Link>
+              <Link to={`/products/${item.id}`}>Comprar</Link>
               <button  onClick={() => (addToCart(item))}>Adicionar ao Carrinho</button>
               </li>
             ))
@@ -68,6 +69,7 @@ function addToCart(produto) {
           }
           </ul>
       </div>
+      <Outlet/>
     </section>
   );
 }
