@@ -1,0 +1,13 @@
+.footer {
+    background-color: var(--primary-color);
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.footer img {
+    width: 200px;
+    height: 200px;
+}

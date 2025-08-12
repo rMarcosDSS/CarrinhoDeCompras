@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import  CartClass  from '../entities/CartClass'
 import  useStockCart  from '../hooks/useStockCart';
 import { Outlet } from "react-router-dom";
+import IconCart from "../../public/shopping-cart.svg";
 
 export default function Products() {
 
@@ -56,14 +57,27 @@ function addToCart(produto) {
       <h1>Produtos</h1>
 
       <div>
-        <ul>
+        <ul className='products-list'>
           {
             products.map((item)=> (
-              <li key={item.id}>{item.title} 
+              
+              <li className='products' key={item.id}> 
+              <Link to={`/products/${item.id}`}>
               <img src={item.images[0]}/>
-              <Link to={`/products/${item.id}`}>Comprar</Link>
-              <button  onClick={() => (addToCart(item))}>Adicionar ao Carrinho</button>
+              <p>{item.title}</p>
+              </Link>
+              <div className='products-info'>
+                <p>R$ {item.price}</p>
+                
+                <button 
+                className='products-btn' 
+                onClick={() => (addToCart(item))}>
+                <img src={IconCart}/> 
+                Adicionar ao Carrinho
+                </button>
+              </div>            
               </li>
+              
             ))
             
           }

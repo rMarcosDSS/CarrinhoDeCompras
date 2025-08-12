@@ -14,6 +14,7 @@
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-inline: 42px;
 }
 
@@ -47,4 +48,8 @@
     color: var(--primary-color);
     background-color: #f0f0f0;
     transition: .3s;
+}
+
+.navbar img {
+    width: 100px;
 }

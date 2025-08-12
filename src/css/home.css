@@ -1,0 +1,6 @@
+.container-banner {
+    background-image: url('../assets/Banner.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
