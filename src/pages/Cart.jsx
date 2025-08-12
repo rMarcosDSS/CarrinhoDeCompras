@@ -1,5 +1,5 @@
 import  useStockCart  from '../hooks/useStockCart';
-
+import "../css/cart.css"
 
 export default function Cart() {
 
@@ -20,37 +20,66 @@ function decreaseQuantityAux(item) {
 }
 
 
-
+  const totalGeral = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   
   return (
     <section>
       <h1>Carrinho de Compras</h1>
 
-      <div>
+      <div className='products-cart'>
+        <tr className='table-titles'>
+          
+          <th>Produto</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th>Total</th>
+        </tr>
+        
           {
             items.map( (item) => (
-              <ul>
-                <li> 
-                  {item.title}
-                  <img src={item.image} alt="" />
+              <tr className='table-cart' key={item.id}>
+                <td>     
+                <div><img src={item.image} alt={item.title} /></div>
+                <p>{item.title}</p>
+                </td>
 
-                  <button onClick={() => (
+                <td>
+                  {item.price.toLocaleString('pt-br',{style: 'currency',
+                    currency: 'BRL'})}
+                </td>
+
+                <td>
+                       <button onClick={() => (
                     decreaseQuantityAux(item)
                   )}>-</button>
-                  <p>{item.quantity}</p>
-                  <button onClick={() => (
+                  {item.quantity}
+                      <button onClick={() => (
                     increasesItem(item.id)
                   )
                   }>+</button>
+                </td>
 
-                  <button onClick={() => (
+                <td>{(item.price * item.quantity)
+                .toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}
+                <button onClick={() => (
                     confirmDelete(item)
                   )}>X</button>
-                </li>
-              </ul>
-            ))
+                </td>
+              </tr>
+            )
+          )
           }
+        <tr className="table-cart total-row">
+            <td >Total Geral: {totalGeral.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</td>
+            <button
+              onClick={() => alert('Compra finalizada! (Ilustrativo)')}
+              className="finalize-button"
+            >
+              Finalizar Compra
+            </button>
+        </tr>
       </div>
+      
     </section>
   );
 }

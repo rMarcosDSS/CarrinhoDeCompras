@@ -1,6 +1,5 @@
 import { useState , useEffect } from 'react';
 import "../css/products.css";
-import { Link } from 'react-router-dom';
 import  CartClass  from '../entities/CartClass'
 import  useStockCart  from '../hooks/useStockCart';
 import { Outlet } from "react-router-dom";
@@ -8,7 +7,7 @@ import IconCart from "../../public/shopping-cart.svg";
 
 export default function Products() {
 
-const url = "https://api.escuelajs.co/api/v1/products"
+const url = "https://fakestoreapi.com/products"
 const { items , addItem , increasesItem } = useStockCart()
 const [products,SetProducts] = useState([])
 
@@ -42,7 +41,7 @@ function addToCart(produto) {
       description: produto.description , 
       price: produto.price , 
       quantity: 1 , 
-      image: produto.images[0]
+      image: produto.image
     })
     console.log(novoProduto)
 
@@ -62,19 +61,19 @@ function addToCart(produto) {
             products.map((item)=> (
               
               <li className='products' key={item.id}> 
-              <Link to={`/products/${item.id}`}>
-              <img src={item.images[0]}/>
-              <p>{item.title}</p>
-              </Link>
+              <div className='products-img'><img src={item.image}/></div>
+              <p>{item.title.length > 30 ? item.title.slice(0, 30) + "..." : item.title}</p>
               <div className='products-info'>
                 <p>R$ {item.price}</p>
                 
-                <button 
-                className='products-btn' 
-                onClick={() => (addToCart(item))}>
-                <img src={IconCart}/> 
-                Adicionar ao Carrinho
-                </button>
+                <div>
+                  <button
+                  className='products-btn'
+                  onClick={() => (addToCart(item))}>
+                  <img src={IconCart}/>
+                  Adicionar ao Carrinho
+                  </button>
+                </div>
               </div>            
               </li>
               
