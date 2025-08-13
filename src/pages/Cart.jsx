@@ -24,7 +24,6 @@ function decreaseQuantityAux(item) {
   
   return (
     <section>
-      <h1>Carrinho de Compras</h1>
 
       <div className='products-cart'>
         <tr className='table-titles'>
@@ -40,7 +39,7 @@ function decreaseQuantityAux(item) {
               <tr className='table-cart' key={item.id}>
                 <td>     
                 <div><img src={item.image} alt={item.title} /></div>
-                <p>{item.title}</p>
+                <p>{item.title.length > 25 ? item.title.slice(0, 25) + "..." : item.title}</p>
                 </td>
 
                 <td>
@@ -69,15 +68,40 @@ function decreaseQuantityAux(item) {
             )
           )
           }
-        <tr className="table-cart total-row">
-            <td >Total Geral: {totalGeral.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</td>
-            <button
-              onClick={() => alert('Compra finalizada! (Ilustrativo)')}
-              className="finalize-button"
-            >
-              Finalizar Compra
-            </button>
-        </tr>
+        <div className='section-total'>
+          <div>
+            <h2>Modo de entrega</h2>
+            <div className='delivery-options'>
+              <div>
+                <input type="radio" id="contactChoice1" name="contact" value="email" />
+                <label for="contactChoice1">Lorem Ipsum</label>
+              </div>
+              <div>
+                <input type="radio" id="contactChoice1" name="contact" value="email" />
+                <label for="contactChoice1">Lorem Ipsum</label>
+              </div>
+            </div>
+          </div>
+          <div className='total-purchase'>
+            <div className='total-default'>
+              <p>Subtotal</p>
+              <p>{totalGeral.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+            </div> 
+            <div className='total-default'>
+              <p>Frete</p>
+              <p>R$ 00,00</p>
+            </div>
+            <div className='total-default'>
+              <h2>Total</h2>
+              <h2>{totalGeral.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h2>
+            </div>
+            <button 
+            className='total-btn'
+            onClick={() => (
+              alert("Compra realizada com sucesso! (Ilustrativo)")
+            )}>Comprar</button>
+          </div>
+        </div>
       </div>
       
     </section>

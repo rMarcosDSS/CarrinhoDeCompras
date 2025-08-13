@@ -4,15 +4,16 @@
     --primary-color: #5E17EB;
     --secondary-color: #E0277B;
     --tertiary-color: #C3C5CA;
+    --quaternary-color: #4B116E;
 }
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    
+    font-family: "Inter", sans-serif;
 }
 
 body{
-    background-color: #E3E3E3;
+    background-color: white;
 }

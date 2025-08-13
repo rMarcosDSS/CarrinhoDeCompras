@@ -1,9 +1,11 @@
 .header {
     background-color: white;
-    margin-inline: 254px;
-    padding: 1.5rem;
-    font-size: 32px;
-    border-radius: 54px;
+    margin-inline: 281px;
+    font-size: 20px;
+    border-radius: 20px;
+    margin-top: 57px;
+    padding: .5rem;
+    box-shadow: 0 0 50px -20px var(--secondary-color);
 }
 
 .header a {
@@ -36,20 +38,23 @@
 
 .navbar-cart a{
     color: white;
-    background-color: var(--primary-color);
-    border: solid 2px var(--primary-color);
-    padding: .5rem;
+    background-image: linear-gradient(to right, var(--secondary-color), var(--quaternary-color));
+    border: none;
+    padding: .5rem 1rem;
      border-radius: 54px;
      transition: .3s;
+      border: 2px solid var(--secondary-color);
 }
 
 .navbar-cart a:hover {
     text-decoration: underline;
-    color: var(--primary-color);
+    color: var(--secondary-color);
+    background-image: none;
     background-color: #f0f0f0;
     transition: .3s;
 }
 
 .navbar img {
-    width: 100px;
+    width: 75px;
+    height: 42px;
 }

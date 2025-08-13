@@ -53,16 +53,15 @@ function addToCart(produto) {
 
   return (
     <section>
-      <h1>Produtos</h1>
-
       <div>
         <ul className='products-list'>
           {
             products.map((item)=> (
               
-              <li className='products' key={item.id}> 
+              <li className='products' key={item.id} onClick={() => (addToCart(item))}> 
               <div className='products-img'><img src={item.image}/></div>
-              <p>{item.title.length > 30 ? item.title.slice(0, 30) + "..." : item.title}</p>
+              <button className='products-btn'>+</button>
+              {/* <p>{item.title.length > 30 ? item.title.slice(0, 30) + "..." : item.title}</p>
               <div className='products-info'>
                 <p>R$ {item.price}</p>
                 
@@ -74,7 +73,7 @@ function addToCart(produto) {
                   Adicionar ao Carrinho
                   </button>
                 </div>
-              </div>            
+              </div>             */}
               </li>
               
             ))
